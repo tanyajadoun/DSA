@@ -1,0 +1,52 @@
+import java.util.*;
+import java.io.*;
+public class RotationMatrix {
+    public static void main(String[] args) {
+      Scanner sc=new Scanner(System.in);
+      System.out.println("enter the no of rows of a matrix:");
+      int m=sc.nextInt();
+      System.out.println("enter the no of columns:");
+      int n=sc.nextInt();
+      int[][] arr = new int[m][n];
+      System.out.println("enter the elements of the array");
+        for(int i=0;i<m;i++){
+            for(int j=0;j<n;j++){
+            arr[i][j]=sc.nextInt();
+        }
+    }
+      
+      //function calling
+      rotatedMatrix(arr);
+      
+      //printing the elements of a matrix
+      for(var mat:arr){
+        System.out.println(Arrays.toString(mat));
+      }
+    }
+
+    public static void rotatedMatrix(int [][]arr){
+        //transpose the 2d array
+        int m=arr.length;
+        int n=arr[0].length;
+        for(int i=0;i<m;i++){
+            for(int j=i;j<n;j++){
+                int temp=arr[i][j];
+                arr[i][j]= arr[j][i];
+                arr[j][i]=temp;
+        }
+    }
+    //swapping left and right side of matrix
+  for(int i=0;i<m;i++){
+    int leftidx=0;
+    int rightidx=n-1;
+    while(leftidx<rightidx){
+        int temp=arr[i][leftidx];
+        arr[i][leftidx]=arr[i][rightidx];
+        arr[i][rightidx]=temp; 
+        leftidx++;
+        rightidx--;
+    }
+  }
+}
+
+}
